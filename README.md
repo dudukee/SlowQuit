@@ -32,7 +32,7 @@ SlowQuit adds a customizable delay to the Cmd-Q keyboard shortcut on macOS, prev
 
 ### Download Release
 
-1. **Download** the latest `.dmg` file from [Releases](https://github.com/dudukee/slowquit-releases/releases)
+1. **Download** the latest `.dmg` file from [Releases](https://github.com/dudukee/SlowQuit/releases)
 2. **Open the .dmg** file
 3. **Drag SlowQuit** to your Applications folder
 4. **Launch** from Applications folder
@@ -147,8 +147,8 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/dudukee/slowquit/issues)
-- **Updates**: [Releases](https://github.com/dudukee/slowquit-releases/releases)
+- **Issues**: [GitHub Issues](https://github.com/dudukee/SlowQuit/issues)
+- **Updates**: [Releases](https://github.com/dudukee/SlowQuit/releases)
 
 ---
 

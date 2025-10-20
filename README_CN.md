@@ -32,7 +32,7 @@ SlowQuit 为 macOS 上的 Cmd-Q 键盘快捷键添加可自定义的延迟，防
 
 ### 下载发布版本
 
-1. **下载** 最新的 `.dmg` 文件，访问 [发布页面](https://github.com/dudukee/slowquit-releases/releases)
+1. **下载** 最新的 `.dmg` 文件，访问 [发布页面](https://github.com/dudukee/SlowQuit/releases)
 2. **打开 .dmg** 文件
 3. **将 SlowQuit 拖拽** 到您的应用程序文件夹
 4. **从应用程序文件夹启动**
@@ -147,8 +147,8 @@ MIT 许可证 - 详情请参见 [LICENSE](LICENSE) 文件。
 
 ## 支持
 
-- **问题反馈**：[GitHub Issues](https://github.com/dudukee/slowquit/issues)
-- **更新下载**：[发布页面](https://github.com/dudukee/slowquit-releases/releases)
+- **问题反馈**：[GitHub Issues](https://github.com/dudukee/SlowQuit/issues)
+- **更新下载**：[发布页面](https://github.com/dudukee/SlowQuit/releases)
 
 ---
 
