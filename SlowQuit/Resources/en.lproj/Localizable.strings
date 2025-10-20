@@ -1,0 +1,93 @@
+/*
+  Localizable.strings (English)
+  SlowQuit
+*/
+
+// Menu Bar
+"menu.enable" = "Enable";
+"menu.settings" = "Settings";
+"menu.launch_at_login" = "Launch at Login";
+"menu.about" = "About";
+"menu.quit" = "Quit";
+"menu.check_update" = "Check for Updates";
+
+// About Dialog
+"about.version_label" = "Version:";
+"about.description" = "Adds a delay to the Cmd-Q shortcut to prevent accidental app quits.\n\nCustomize the delay duration in Settings.";
+
+// Permission Dialog
+"permission.title" = "Accessibility Permission Required";
+"permission.message" = "SlowQuit needs accessibility permission to monitor global shortcuts.\n\nPlease grant permission in System Settings:\nSystem Settings → Privacy & Security → Accessibility\n\nPlease restart the app after granting permission.";
+"permission.open_settings" = "Open System Settings";
+"permission.later" = "Later";
+"permission.description" = "SlowQuit needs accessibility permission to intercept the global Cmd-Q shortcut, adding a 1-second delay before quitting apps to prevent accidental quits.";
+
+// Overlay
+"overlay.hold_to_quit" = "Hold to Quit...";
+
+// Alerts
+"alert.error" = "Error";
+"alert.ok" = "OK";
+"alert.confirm" = "OK";
+
+// Common
+"common.back" = "Back";
+
+// Error Messages
+"error.launch_at_login" = "Unable to change launch at login settings";
+"error.launch_at_login_enable" = "Unable to enable launch at login";
+"error.launch_at_login_disable" = "Unable to disable launch at login";
+"error.launch_at_login_manual_setup" = "Please manually add SlowQuit to Login Items in System Settings → General → Login Items";
+
+// Log Messages
+"log.enabled" = "enabled";
+"log.disabled" = "disabled";
+
+// Settings
+"settings.title" = "Settings";
+"settings.delay_label" = "Delay Duration";
+"settings.delay_description" = "Hold Cmd+Q duration";
+"settings.delay_unit" = "sec";
+"settings.help_text" = "Adjust how long you need to hold Cmd+Q to quit an application. A longer duration provides better protection against accidental quits.";
+
+// App List
+"app_list.mode_label" = "App List Mode";
+"app_list.mode_global" = "Global";
+"app_list.mode_whitelist" = "Whitelist";
+"app_list.mode_blacklist" = "Blacklist";
+"app_list.mode_global_desc" = "Enable delay for all applications";
+"app_list.mode_whitelist_desc" = "Only enable delay for whitelisted apps, others are unaffected";
+"app_list.mode_blacklist_desc" = "Disable delay for blacklisted apps, others are enabled";
+"app_list.title" = "App List";
+"app_list.empty" = "List is empty. Click the button below to add apps";
+"app_list.add_button" = "Add App";
+"app_list.remove" = "Remove";
+"app_list.manage_button" = "Manage App List";
+"app_list.manage_title" = "App List Management";
+"app_list.whitelist_title" = "Whitelist Management";
+"app_list.blacklist_title" = "Blacklist Management";
+"app_list.whitelist_subtitle" = "Only these apps will have quit delay enabled";
+"app_list.blacklist_subtitle" = "These apps will not have quit delay enabled";
+"app_list.whitelist_empty" = "Whitelist is empty\nAdd apps to enable delay only for them";
+"app_list.blacklist_empty" = "Blacklist is empty\nAdd apps to disable delay for them";
+"app_list.manage_whitelist" = "Manage Whitelist";
+"app_list.manage_blacklist" = "Manage Blacklist";
+
+// App Picker
+"app_picker.title" = "Select App";
+"app_picker.search" = "Search app name or Bundle ID";
+"app_picker.no_apps" = "No running apps";
+"app_picker.no_results" = "No matching apps found";
+"app_picker.loading" = "Loading apps...";
+"app_picker.added" = "Added";
+
+// Update
+"update.available_title" = "Update Available";
+"update.new_version" = "New version:";
+"update.force_required" = "⚠️ This is a critical update and must be installed now.";
+"update.now" = "Update Now";
+"update.later" = "Remind Me Later";
+"update.skip" = "Skip This Version";
+"update.check_failed" = "Update check failed: %@";
+"update.no_new_version" = "You're up to date";
+"update.already_latest" = "You are using the latest version.";

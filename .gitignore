@@ -1,0 +1,94 @@
+# ===================================================================
+# General macOS & System Files
+# 作用：忽略macOS系统自动生成的文件，如.DS_Store
+# ===================================================================
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon?
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.Spotlight-V100
+.Trashes
+
+# ===================================================================
+# Xcode Project Files
+# 作用：忽略Xcode项目中的用户个人设置和临时文件
+# ===================================================================
+
+# User-specific settings
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xctestrun
+
+# Local build products and intermediates
+# 本地编译生成的文件，体积很大，不需要上传
+/build/
+DerivedData/
+*.app
+*.ipa
+
+# Swift Package Manager
+# SPM生成的本地缓存和编译产物
+.build/
+.swiftpm/
+
+# Carthage
+# Carthage生成的依赖文件
+/Carthage/Build/
+/Carthage/Checkouts/
+
+# CocoaPods
+# CocoaPods生成的依赖文件和工作空间
+/Pods/
+Podfile.lock
+
+# Playgrounds
+# Playground的临时文件
+timeline.xctimeline
+playground.xcworkspace
+
+# ===================================================================
+# Other Dependencies & Tools
+# 作用：忽略其他常用工具或依赖管理的生成文件
+# ===================================================================
+
+# Fastlane
+# Fastlane的报告和日志文件
+/fastlane/report.xml
+/fastlane/logs/
+/fastlane/test_output/
+
+# Reveal App (a debugging tool)
+RevealServer.xcframework
+
+# ===================================================================
+# Sensitive Information
+# 作用：忽略可能包含敏感信息的文件，例如API密钥
+# ===================================================================
+# 建议创建一个单独的文件（如 api-keys.json）来管理密钥，
+# 并将该文件名添加到 .gitignore 中，然后提供一个示例文件。
+*.keys
+*.xcconfig # 如果xcconfig文件包含敏感信息
+
+# Secrets file example
+secrets.plist
+*.env
+
+
+.certificates/
+.claude/
+
+*.md
+
+*.sh
+*.dmg
+
+!README.md
+!README_CN.md

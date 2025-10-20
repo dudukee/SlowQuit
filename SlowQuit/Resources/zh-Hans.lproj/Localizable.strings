@@ -1,0 +1,93 @@
+/*
+  Localizable.strings (Simplified Chinese)
+  SlowQuit
+*/
+
+// Menu Bar
+"menu.enable" = "启用";
+"menu.settings" = "设置...";
+"menu.launch_at_login" = "开机自启动";
+"menu.about" = "关于";
+"menu.quit" = "退出";
+"menu.check_update" = "检查更新...";
+
+// About Dialog
+"about.version_label" = "版本:";
+"about.description" = "为 Cmd-Q 快捷键添加延迟，防止意外退出应用。\n\n可在设置中自定义延迟时长。";
+
+// Permission Dialog
+"permission.title" = "需要辅助功能权限";
+"permission.message" = "SlowQuit 需要辅助功能权限来监听全局快捷键。\n\n请在系统设置中授予权限：\n系统设置 → 隐私与安全性 → 辅助功能\n\n授予权限后，请重启应用。";
+"permission.open_settings" = "打开系统设置";
+"permission.later" = "稍后设置";
+"permission.description" = "SlowQuit 需要辅助功能权限来拦截全局 Cmd-Q 快捷键，为退出应用添加 1 秒延迟，防止意外退出。";
+
+// Overlay
+"overlay.hold_to_quit" = "按住退出...";
+
+// Alerts
+"alert.error" = "错误";
+"alert.ok" = "好的";
+"alert.confirm" = "确定";
+
+// Common
+"common.back" = "返回";
+
+// Error Messages
+"error.launch_at_login" = "无法更改开机自启动设置";
+"error.launch_at_login_enable" = "无法启用开机自启动";
+"error.launch_at_login_disable" = "无法禁用开机自��动";
+"error.launch_at_login_manual_setup" = "已为您打开系统设置，请在「用户与群组 → 登录项」中手动添加 SlowQuit";
+
+// Log Messages
+"log.enabled" = "启用";
+"log.disabled" = "禁用";
+
+// Settings
+"settings.title" = "设置";
+"settings.delay_label" = "延迟时长";
+"settings.delay_description" = "按住 Cmd+Q 的时长";
+"settings.delay_unit" = "秒";
+"settings.help_text" = "调整按住 Cmd+Q 需要保持的时长以退出应用。较长的时长可以更好地防止误操作。";
+
+// App List
+"app_list.mode_label" = "应用列表模式";
+"app_list.mode_global" = "全局";
+"app_list.mode_whitelist" = "白名单";
+"app_list.mode_blacklist" = "黑名单";
+"app_list.mode_global_desc" = "对所有应用启用延迟退出";
+"app_list.mode_whitelist_desc" = "仅对白名单中的应用启用延迟退出，其他应用不受影响";
+"app_list.mode_blacklist_desc" = "对黑名单中的应用禁用延迟退出，其他应用正常启用";
+"app_list.title" = "应用列表";
+"app_list.empty" = "列表为空，点击下方按钮添加应用";
+"app_list.add_button" = "添加应用";
+"app_list.remove" = "移除";
+"app_list.manage_button" = "管理应用列表";
+"app_list.manage_title" = "应用列表管理";
+"app_list.whitelist_title" = "白名单管理";
+"app_list.blacklist_title" = "黑名单管理";
+"app_list.whitelist_subtitle" = "仅这些应用会启用延迟退出";
+"app_list.blacklist_subtitle" = "这些应用不会启用延迟退出";
+"app_list.whitelist_empty" = "白名单为空\n添加应用后，只有这些应用会启用延迟退出";
+"app_list.blacklist_empty" = "黑名单为空\n添加应用后，这些应用将不会启用延迟退出";
+"app_list.manage_whitelist" = "管理白名单";
+"app_list.manage_blacklist" = "管理黑名单";
+
+// App Picker
+"app_picker.title" = "选择应用";
+"app_picker.search" = "搜索应用名称或 Bundle ID";
+"app_picker.no_apps" = "没有正在运行的应用";
+"app_picker.no_results" = "没有找到匹配的应用";
+"app_picker.loading" = "正在加载应用...";
+"app_picker.added" = "已添加";
+
+// Update
+"update.available_title" = "发现新版本";
+"update.new_version" = "新版本:";
+"update.force_required" = "⚠️ 这是一个重要更新，需要立即更新。";
+"update.now" = "立即更新";
+"update.later" = "稍后提醒";
+"update.skip" = "跳过此版本";
+"update.check_failed" = "检查更新失败: %@";
+"update.no_new_version" = "已是最新版本";
+"update.already_latest" = "您当前使用的是最新版本。";

@@ -1,0 +1,6 @@
+/*
+  InfoPlist.strings (English)
+  SlowQuit
+*/
+
+"NSAccessibilityUsageDescription" = "SlowQuit needs accessibility permission to intercept the global Cmd-Q shortcut, adding a 1-second delay before quitting apps to prevent accidental quits.";

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- 禁用 App Sandbox，CGEventTap 需要无沙盒环境 -->
+	<key>com.apple.security.app-sandbox</key>
+	<false/>
+
+	<!-- 允许调试（仅 Debug 配置需要） -->
+	<key>com.apple.security.get-task-allow</key>
+	<true/>
+</dict>
+</plist>

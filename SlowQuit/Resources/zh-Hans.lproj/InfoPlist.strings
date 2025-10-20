@@ -1,0 +1,6 @@
+/*
+  InfoPlist.strings (Simplified Chinese)
+  SlowQuit
+*/
+
+"NSAccessibilityUsageDescription" = "SlowQuit 需要辅助功能权限来拦截全局 Cmd-Q 快捷键，为退出应用添加 1 秒延迟，防止意外退出。";
