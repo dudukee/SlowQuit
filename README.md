@@ -10,9 +10,9 @@
 
 [Features](#features) • [Installation](#installation) • [Usage](#usage) • [中文文档](README_CN.md)
 
-<img src="img/cmdq.gif" alt="press cmd+q" style="zoom:50%;" />
+<img src="img/cmdq.gif" alt="press cmd+q" width="400" />
 
-<img src="img/setting.png" alt="setting" style="zoom:75%;" />
+<img src="img/setting.png" alt="setting" width="400" />
 
 
 
