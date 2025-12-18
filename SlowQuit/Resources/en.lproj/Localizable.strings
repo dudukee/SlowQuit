@@ -10,6 +10,7 @@
 "menu.about" = "About";
 "menu.quit" = "Quit";
 "menu.check_update" = "Check for Updates";
+"menu.open_logs" = "Open Log Folder";
 
 // About Dialog
 "about.version_label" = "Version:";
@@ -29,6 +30,10 @@
 "alert.error" = "Error";
 "alert.ok" = "OK";
 "alert.confirm" = "OK";
+
+// Secure Input Alert
+"secure_input.alert_title" = "Secure Input Occupied";
+"secure_input.alert_message" = "System secure input mode is abnormal. Please try locking your screen (Control+Command+Q) and unlocking it to restore functionality.";
 
 // Common
 "common.back" = "Back";

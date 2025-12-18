@@ -10,6 +10,7 @@
 "menu.about" = "关于";
 "menu.quit" = "退出";
 "menu.check_update" = "检查更新...";
+"menu.open_logs" = "打开日志文件夹";
 
 // About Dialog
 "about.version_label" = "版本:";
@@ -29,6 +30,10 @@
 "alert.error" = "错误";
 "alert.ok" = "好的";
 "alert.confirm" = "确定";
+
+// Secure Input Alert
+"secure_input.alert_title" = "系统安全输入被占用";
+"secure_input.alert_message" = "检测到系统安全输入模式异常，请尝试锁定屏幕（Control+Command+Q）后重新解锁以恢复功能。";
 
 // Common
 "common.back" = "返回";

@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import Cocoa
 
 class HealthMonitor {
     private let eventMonitor: EventMonitor
     private var healthCheckTimer: Timer?
     private let checkInterval: TimeInterval = 30.0  // 改为每 30 秒检查一次（降低功耗）
     private var consecutiveFailures = 0  // 连续失败计数
+    private var hasShownSecureInputAlert = false  // 防止重复弹窗
 
     init(eventMonitor: EventMonitor) {
         self.eventMonitor = eventMonitor
@@ -39,8 +41,13 @@ class HealthMonitor {
     }
 
     private func performHealthCheck() {
+        // 检查安全输入状态(仅记录日志,不弹窗)
+        if let processName = eventMonitor.checkSecureInputState() {
+            Logger.shared.log("检测到安全输入模式被占用: \(processName) (不影响功能)", level: .debug)
+        }
+
         // 检查事件监听器是否正常运行
-        if !eventMonitor.isRunning {
+        if !eventMonitor.isRunning || !eventMonitor.isEventTapEnabled() {
             consecutiveFailures += 1
             Logger.shared.log("检测到事件监听器未运行 (连续失败: \(consecutiveFailures)次)", level: .warning)
 
@@ -77,5 +84,16 @@ class HealthMonitor {
     /// 手动触发健康检查（用于响应特定事件）
     func triggerHealthCheck() {
         performHealthCheck()
+    }
+
+    private func showSecureInputAlert(processName: String) {
+        DispatchQueue.main.async {
+            let alert = NSAlert()
+            alert.messageText = L10n.secureInputAlertTitle
+            alert.informativeText = L10n.secureInputAlertMessage
+            alert.alertStyle = .warning
+            alert.addButton(withTitle: L10n.alertOk)
+            alert.runModal()
+        }
     }
 }

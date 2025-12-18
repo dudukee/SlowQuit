@@ -21,9 +21,24 @@ class EventMonitor {
     private var targetApp: NSRunningApplication?  // 锁定目标应用（按下Cmd+Q时的前台应用）
 
     private(set) var isRunning = false
+    var onSecureInputDetected: (() -> Void)?
 
     init(overlayWindow: OverlayWindow) {
         self.overlayWindow = overlayWindow
+    }
+
+    /// 检查 CGEventTap 是否真正有效
+    func isEventTapEnabled() -> Bool {
+        guard let eventTap = eventTap else { return false }
+        return CGEvent.tapIsEnabled(tap: eventTap)
+    }
+
+    /// 检查安全输入状态，返回占用进程名称
+    func checkSecureInputState() -> String? {
+        if IsSecureEventInputEnabled() {
+            return "loginwindow"
+        }
+        return nil
     }
 
     func start() {

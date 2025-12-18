@@ -21,6 +21,7 @@ enum L10n {
     static let menuAbout = string("menu.about")
     static let menuQuit = string("menu.quit")
     static let menuCheckUpdate = string("menu.check_update")
+    static let menuOpenLogs = string("menu.open_logs")
 
     // MARK: - About Dialog
     static var aboutVersion: String {
@@ -45,6 +46,10 @@ enum L10n {
     static let alertError = string("alert.error")
     static let alertOk = string("alert.ok")
     static let alertConfirm = string("alert.confirm")
+
+    // MARK: - Secure Input Alert
+    static let secureInputAlertTitle = string("secure_input.alert_title")
+    static let secureInputAlertMessage = string("secure_input.alert_message")
 
     // MARK: - Common
     static let commonBack = string("common.back")
