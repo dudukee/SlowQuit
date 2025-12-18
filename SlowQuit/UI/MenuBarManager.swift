@@ -105,6 +105,17 @@ class MenuBarManager {
 
         menu.addItem(NSMenuItem.separator())
 
+        // 打开日志文件夹
+        let openLogsItem = NSMenuItem(
+            title: L10n.menuOpenLogs,
+            action: #selector(openLogFolder),
+            keyEquivalent: ""
+        )
+        openLogsItem.target = self
+        menu.addItem(openLogsItem)
+
+        menu.addItem(NSMenuItem.separator())
+
         // 退出
         let quitItem = NSMenuItem(
             title: L10n.menuQuit,
@@ -182,6 +193,12 @@ class MenuBarManager {
                 }
             }
         }
+    }
+
+    @objc private func openLogFolder() {
+        let logFolderURL = Logger.shared.getLogFolderURL()
+        NSWorkspace.shared.open(logFolderURL)
+        Logger.shared.log("用户打开日志文件夹", level: .info)
     }
 
     @objc private func quitApp() {
