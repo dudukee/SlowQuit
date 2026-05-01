@@ -19,7 +19,7 @@
 
 // Permission Dialog
 "permission.title" = "Permissions Required";
-"permission.message" = "SlowQuit needs permission to listen for protected shortcuts and send the confirmed Cmd-Q or Cmd-W event.\n\nPlease grant Input Monitoring and Accessibility permission when prompted.";
+"permission.message" = "SlowQuit needs Accessibility permission to intercept protected shortcuts and send the confirmed Cmd-Q or Cmd-W event.";
 "permission.open_settings" = "Open System Settings";
 "permission.grant" = "Grant Permissions";
 "permission.later" = "Later";
@@ -27,21 +27,16 @@
 "permission.ready_title" = "Permissions Ready";
 "permission.ready_message" = "Shortcut protection is active.";
 "permission.still_required_title" = "Permissions Still Required";
-"permission.still_required_message" = "SlowQuit still needs Input Monitoring and Accessibility permission. Open System Settings → Privacy & Security, grant the missing permissions, then use Check Permissions from the menu bar.";
+"permission.still_required_message" = "SlowQuit still needs Accessibility permission. Open System Settings → Privacy & Security → Accessibility, grant permission, then use Check Permissions from the menu bar.";
 "permission.guide_title" = "Permissions Required";
-"permission.guide_subtitle" = "SlowQuit needs two macOS permissions before shortcut protection can run.";
-"permission.guide_footnote" = "If System Settings does not open the exact page, choose Privacy & Security and grant the missing permission manually.";
-"permission.listen_title" = "Input Monitoring";
-"permission.listen_description" = "Allows SlowQuit to listen for protected Cmd-Q and Cmd-W shortcuts before apps receive them.";
-"permission.post_title" = "Accessibility";
-"permission.post_description" = "Allows SlowQuit to send the confirmed Cmd-Q or Cmd-W action after the hold timer completes.";
-"permission.open_input_monitoring" = "Open Input Monitoring";
+"permission.guide_subtitle" = "SlowQuit needs Accessibility permission before shortcut protection can run.";
+"permission.guide_footnote" = "If System Settings does not open the exact page, choose Privacy & Security → Accessibility and grant permission manually.";
+"permission.accessibility_title" = "Accessibility";
+"permission.accessibility_description" = "Allows SlowQuit to intercept Cmd-Q and Cmd-W, then send the confirmed action after the hold timer completes.";
 "permission.open_accessibility" = "Open Accessibility";
 "permission.recheck" = "Recheck";
 "permission.granted" = "Granted";
 "permission.not_granted" = "Missing";
-"permission.input_monitoring_guide_title" = "After Input Monitoring opens";
-"permission.input_monitoring_guide_message" = "If SlowQuit is not listed, quit and reopen SlowQuit, then return to Input Monitoring and enable it. macOS may only add the app after it tries to listen for keyboard events.";
 
 // Overlay
 "overlay.hold_to_quit" = "Hold to Quit...";

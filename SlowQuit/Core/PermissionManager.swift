@@ -7,28 +7,25 @@
 
 import Cocoa
 import ApplicationServices
-import CoreGraphics
 
 struct EventPermissionStatus {
-    let canListenEvents: Bool
-    let canPostEvents: Bool
+    let canUseAccessibility: Bool
 
     var isFullyGranted: Bool {
-        canListenEvents && canPostEvents
+        canUseAccessibility
     }
 }
 
 class PermissionManager {
 
-    /// 检查是否已授予事件监听和事件发送权限。不触发系统授权弹窗。
+    /// 检查是否已授予辅助功能权限。不触发系统授权弹窗。
     func checkEventPermissions() -> EventPermissionStatus {
         return EventPermissionStatus(
-            canListenEvents: CGPreflightListenEventAccess(),
-            canPostEvents: AXIsProcessTrusted()
+            canUseAccessibility: AXIsProcessTrusted()
         )
     }
 
-    /// 兼容旧调用：完整事件权限才视为可用。
+    /// 兼容旧调用：辅助功能权限可用才视为可用。
     func checkAccessibilityPermission() -> Bool {
         return checkEventPermissions().isFullyGranted
     }
@@ -38,46 +35,18 @@ class PermissionManager {
     func requestMissingEventPermissions() -> EventPermissionStatus {
         let status = checkEventPermissions()
 
-        if !status.canListenEvents {
-            requestListenEventAccess()
-        }
-
-        if !status.canPostEvents {
-            requestPostEventAccess()
+        if !status.canUseAccessibility {
+            requestAccessibilityPermission()
         }
 
         return checkEventPermissions()
     }
 
     @discardableResult
-    func requestListenEventAccess() -> EventPermissionStatus {
-        Logger.shared.log("请求事件监听权限", level: .info)
-        _ = CGRequestListenEventAccess()
-        return checkEventPermissions()
-    }
-
-    @discardableResult
-    func requestPostEventAccess() -> EventPermissionStatus {
+    func requestAccessibilityPermission() -> EventPermissionStatus {
         Logger.shared.log("请求辅助功能权限", level: .info)
         promptForAccessibilityPermission()
         return checkEventPermissions()
-    }
-
-    func openInputMonitoringSettings() {
-        openPrivacyPreferences(anchor: "Privacy_ListenEvent")
-    }
-
-    func showInputMonitoringGuide() {
-        DispatchQueue.main.async {
-            NSApp.activate(ignoringOtherApps: true)
-
-            let alert = NSAlert()
-            alert.messageText = L10n.permissionInputMonitoringGuideTitle
-            alert.informativeText = L10n.permissionInputMonitoringGuideMessage
-            alert.alertStyle = .informational
-            alert.addButton(withTitle: L10n.alertOk)
-            alert.runModal()
-        }
     }
 
     func openAccessibilitySettings() {

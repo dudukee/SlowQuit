@@ -19,7 +19,7 @@
 
 // Permission Dialog
 "permission.title" = "需要权限";
-"permission.message" = "SlowQuit 需要权限来监听受保护快捷键，并在确认后发送 Cmd-Q 或 Cmd-W 事件。\n\n请在系统提示中授予输入监控和辅助功能权限。";
+"permission.message" = "SlowQuit 需要辅助功能权限来拦截受保护快捷键，并在确认后发送 Cmd-Q 或 Cmd-W 事件。";
 "permission.open_settings" = "打开系统设置";
 "permission.grant" = "授予权限";
 "permission.later" = "稍后设置";
@@ -27,21 +27,16 @@
 "permission.ready_title" = "权限已就绪";
 "permission.ready_message" = "快捷键保护已启用。";
 "permission.still_required_title" = "仍需要权限";
-"permission.still_required_message" = "SlowQuit 仍需要输入监控和辅助功能权限。请打开系统设置 → 隐私与安全性，授予缺失权限后，在菜单栏中点击「检查权限」。";
+"permission.still_required_message" = "SlowQuit 仍需要辅助功能权限。请打开系统设置 → 隐私与安全性 → 辅助功能，授权后在菜单栏中点击「检查权限」。";
 "permission.guide_title" = "需要权限";
-"permission.guide_subtitle" = "SlowQuit 需要两项 macOS 权限后，才能启用快捷键保护。";
-"permission.guide_footnote" = "如果系统设置没有打开到精确页面，请进入「隐私与安全性」后手动授予缺失权限。";
-"permission.listen_title" = "输入监控";
-"permission.listen_description" = "允许 SlowQuit 在应用收到快捷键前监听受保护的 Cmd-Q 和 Cmd-W。";
-"permission.post_title" = "辅助功能";
-"permission.post_description" = "允许 SlowQuit 在长按计时完成后发送确认后的 Cmd-Q 或 Cmd-W 操作。";
-"permission.open_input_monitoring" = "打开输入监控";
+"permission.guide_subtitle" = "SlowQuit 需要辅助功能权限后，才能启用快捷键保护。";
+"permission.guide_footnote" = "如果系统设置没有打开到精确页面，请进入「隐私与安全性」→「辅助功能」后手动授予权限。";
+"permission.accessibility_title" = "辅助功能";
+"permission.accessibility_description" = "允许 SlowQuit 拦截 Cmd-Q 和 Cmd-W，并在长按计时完成后发送确认后的操作。";
 "permission.open_accessibility" = "打开辅助功能";
 "permission.recheck" = "重新检查";
 "permission.granted" = "已授权";
 "permission.not_granted" = "未授权";
-"permission.input_monitoring_guide_title" = "打开输入监控后";
-"permission.input_monitoring_guide_message" = "如果列表里没有 SlowQuit，请先完全退出并重新打开 SlowQuit，再回到输入监控里勾选它。macOS 有时只会在应用尝试监听键盘事件后把它加入列表。";
 
 // Overlay
 "overlay.hold_to_quit" = "按住退出...";

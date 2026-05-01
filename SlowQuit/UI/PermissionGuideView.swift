@@ -40,27 +40,13 @@ struct PermissionGuideView: View {
 
             VStack(spacing: 12) {
                 PermissionGuideRow(
-                    iconName: "keyboard",
-                    title: L10n.permissionListenTitle,
-                    description: L10n.permissionListenDescription,
-                    isGranted: status.canListenEvents,
-                    buttonTitle: L10n.permissionOpenInputMonitoring,
-                    action: {
-                        permissionManager.requestListenEventAccess()
-                        permissionManager.openInputMonitoringSettings()
-                        permissionManager.showInputMonitoringGuide()
-                        refreshStatus()
-                    }
-                )
-
-                PermissionGuideRow(
                     iconName: "accessibility",
-                    title: L10n.permissionPostTitle,
-                    description: L10n.permissionPostDescription,
-                    isGranted: status.canPostEvents,
+                    title: L10n.permissionAccessibilityTitle,
+                    description: L10n.permissionAccessibilityDescription,
+                    isGranted: status.canUseAccessibility,
                     buttonTitle: L10n.permissionOpenAccessibility,
                     action: {
-                        permissionManager.requestPostEventAccess()
+                        permissionManager.requestAccessibilityPermission()
                         permissionManager.openAccessibilitySettings()
                         refreshStatus()
                     }
@@ -89,14 +75,14 @@ struct PermissionGuideView: View {
                 Spacer()
 
                 Button(L10n.permissionRecheck) {
-                    refreshStatus(closeWhenReady: false)
+                    refreshStatus()
                 }
                 .keyboardShortcut(.defaultAction)
             }
             .padding(.horizontal, 28)
             .padding(.vertical, 16)
         }
-        .frame(width: 520, height: 420)
+        .frame(width: 520, height: 320)
         .onAppear {
             refreshStatus(closeWhenReady: false)
         }
@@ -105,10 +91,10 @@ struct PermissionGuideView: View {
     private func refreshStatus(closeWhenReady: Bool = true) {
         status = permissionManager.checkEventPermissions()
         if status.isFullyGranted {
-            onPermissionsReady()
             if closeWhenReady {
                 onClose()
             }
+            onPermissionsReady()
         }
     }
 }

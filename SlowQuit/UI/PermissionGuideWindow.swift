@@ -15,7 +15,7 @@ class PermissionGuideWindow: NSWindow, NSWindowDelegate {
         self.onPermissionsReady = onPermissionsReady
 
         super.init(
-            contentRect: NSRect(x: 0, y: 0, width: 520, height: 420),
+            contentRect: NSRect(x: 0, y: 0, width: 520, height: 320),
             styleMask: [.titled, .closable, .fullSizeContentView],
             backing: .buffered,
             defer: false

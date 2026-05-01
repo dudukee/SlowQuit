@@ -3,4 +3,4 @@
   SlowQuit
 */
 
-"NSAccessibilityUsageDescription" = "SlowQuit needs permission to listen for protected shortcuts and send the confirmed action.";
+"NSAccessibilityUsageDescription" = "SlowQuit needs Accessibility permission to intercept protected shortcuts and send the confirmed action.";

@@ -3,4 +3,4 @@
   SlowQuit
 */
 
-"NSAccessibilityUsageDescription" = "SlowQuit 需要权限来监听受保护快捷键，并发送确认后的操作。";
+"NSAccessibilityUsageDescription" = "SlowQuit 需要辅助功能权限来拦截受保护快捷键，并发送确认后的操作。";

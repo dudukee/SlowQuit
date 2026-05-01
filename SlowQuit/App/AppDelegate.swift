@@ -16,6 +16,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var permissionGuideWindow: PermissionGuideWindow?
     private var healthMonitor: HealthMonitor?
     private var permissionManager: PermissionManager?
+    private var shouldShowSettingsWhenPermissionsReady = false
+    private let initialSettingsShownKey = "initialSettingsShownAfterPermissionGrant"
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         // 初始化时隐藏程序坞图标
@@ -87,7 +89,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             healthMonitor.stop()
 
             if showPromptIfNeeded {
-                showPermissionGuide()
+                showPermissionGuide(showSettingsWhenReady: shouldShowSettingsAfterInitialPermissionGrant())
             }
             return
         }
@@ -103,18 +105,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         settingsWindow?.showWindow()
     }
 
-    private func showPermissionGuide() {
+    private func showPermissionGuide(showSettingsWhenReady: Bool = false) {
         guard let permissionManager = permissionManager else { return }
 
+        shouldShowSettingsWhenPermissionsReady = shouldShowSettingsWhenPermissionsReady || showSettingsWhenReady
         if permissionGuideWindow == nil {
             permissionGuideWindow = PermissionGuideWindow(
                 permissionManager: permissionManager,
                 onPermissionsReady: { [weak self] in
                     self?.startProtectionIfPermitted(showPromptIfNeeded: false)
+                    self?.showInitialSettingsIfNeeded()
                 }
             )
         }
         permissionGuideWindow?.showWindow()
+    }
+
+    private func shouldShowSettingsAfterInitialPermissionGrant() -> Bool {
+        !UserDefaults.standard.bool(forKey: initialSettingsShownKey)
+    }
+
+    private func markInitialSettingsShown() {
+        UserDefaults.standard.set(true, forKey: initialSettingsShownKey)
+    }
+
+    private func showInitialSettingsIfNeeded() {
+        guard shouldShowSettingsWhenPermissionsReady else { return }
+        shouldShowSettingsWhenPermissionsReady = false
+        markInitialSettingsShown()
+        showSettings()
     }
 
     func applicationWillTerminate(_ notification: Notification) {
