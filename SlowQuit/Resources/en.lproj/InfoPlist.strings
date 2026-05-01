@@ -3,4 +3,4 @@
   SlowQuit
 */
 
-"NSAccessibilityUsageDescription" = "SlowQuit needs accessibility permission to intercept the global Cmd-Q shortcut, adding a 1-second delay before quitting apps to prevent accidental quits.";
+"NSAccessibilityUsageDescription" = "SlowQuit needs permission to listen for protected shortcuts and send the confirmed action.";

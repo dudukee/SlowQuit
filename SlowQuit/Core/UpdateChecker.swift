@@ -46,7 +46,7 @@ class UpdateChecker {
     static let shared = UpdateChecker()
     
     // 配置更新检查的URL
-    private let updateCheckURL = "https://raw.githubusercontent.com/dudukee/slowquit-releases/refs/heads/main/update.json"
+    private let updateCheckURL = "https://raw.githubusercontent.com/dudukee/SlowQuit/refs/heads/main/releases/update.json"
     
     private let lastCheckKey = "LastUpdateCheckDate"
     private let skipVersionKey = "SkipUpdateVersion"

@@ -7,43 +7,92 @@
 
 import Cocoa
 import ApplicationServices
+import CoreGraphics
+
+struct EventPermissionStatus {
+    let canListenEvents: Bool
+    let canPostEvents: Bool
+
+    var isFullyGranted: Bool {
+        canListenEvents && canPostEvents
+    }
+}
 
 class PermissionManager {
 
-    /// 检查是否已授予辅助功能权限
+    /// 检查是否已授予事件监听和事件发送权限。不触发系统授权弹窗。
+    func checkEventPermissions() -> EventPermissionStatus {
+        return EventPermissionStatus(
+            canListenEvents: CGPreflightListenEventAccess(),
+            canPostEvents: AXIsProcessTrusted()
+        )
+    }
+
+    /// 兼容旧调用：完整事件权限才视为可用。
     func checkAccessibilityPermission() -> Bool {
-        return AXIsProcessTrusted()
+        return checkEventPermissions().isFullyGranted
     }
 
-    /// 请求辅助功能权限
-    func requestAccessibilityPermission() {
-        let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true]
-        AXIsProcessTrustedWithOptions(options as CFDictionary)
+    /// 由用户明确操作触发缺失权限请求。
+    @discardableResult
+    func requestMissingEventPermissions() -> EventPermissionStatus {
+        let status = checkEventPermissions()
 
-        // 显示友好提示
-        showPermissionAlert()
+        if !status.canListenEvents {
+            requestListenEventAccess()
+        }
+
+        if !status.canPostEvents {
+            requestPostEventAccess()
+        }
+
+        return checkEventPermissions()
     }
 
-    /// 显示权限请求提示对话框
-    private func showPermissionAlert() {
+    @discardableResult
+    func requestListenEventAccess() -> EventPermissionStatus {
+        Logger.shared.log("请求事件监听权限", level: .info)
+        _ = CGRequestListenEventAccess()
+        return checkEventPermissions()
+    }
+
+    @discardableResult
+    func requestPostEventAccess() -> EventPermissionStatus {
+        Logger.shared.log("请求辅助功能权限", level: .info)
+        promptForAccessibilityPermission()
+        return checkEventPermissions()
+    }
+
+    func openInputMonitoringSettings() {
+        openPrivacyPreferences(anchor: "Privacy_ListenEvent")
+    }
+
+    func showInputMonitoringGuide() {
         DispatchQueue.main.async {
-            let alert = NSAlert()
-            alert.messageText = L10n.permissionTitle
-            alert.informativeText = L10n.permissionMessage
-            alert.alertStyle = .informational
-            alert.addButton(withTitle: L10n.permissionOpenSettings)
-            alert.addButton(withTitle: L10n.permissionLater)
+            NSApp.activate(ignoringOtherApps: true)
 
-            let response = alert.runModal()
-            if response == .alertFirstButtonReturn {
-                self.openAccessibilityPreferences()
-            }
+            let alert = NSAlert()
+            alert.messageText = L10n.permissionInputMonitoringGuideTitle
+            alert.informativeText = L10n.permissionInputMonitoringGuideMessage
+            alert.alertStyle = .informational
+            alert.addButton(withTitle: L10n.alertOk)
+            alert.runModal()
         }
     }
 
-    /// 打开系统辅助功能设置
-    private func openAccessibilityPreferences() {
-        let prefpaneURL = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!
+    func openAccessibilitySettings() {
+        openPrivacyPreferences(anchor: "Privacy_Accessibility")
+    }
+
+    private func openPrivacyPreferences(anchor: String) {
+        let prefpaneURL = URL(string: "x-apple.systempreferences:com.apple.preference.security?\(anchor)")!
         NSWorkspace.shared.open(prefpaneURL)
+    }
+
+    private func promptForAccessibilityPermission() {
+        let options = [
+            kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true
+        ] as CFDictionary
+        _ = AXIsProcessTrustedWithOptions(options)
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @State private var quitDelay: Double
+    @State private var slowCloseEnabled: Bool
     @State private var listMode: ListMode
     @State private var showingAppListManagement = false
     @State private var isUpdatingMode = false // 防止快速切换
@@ -19,6 +20,7 @@ struct SettingsView: View {
 
     init() {
         _quitDelay = State(initialValue: SettingsManager.shared.quitDelay)
+        _slowCloseEnabled = State(initialValue: SettingsManager.shared.slowCloseEnabled)
         _listMode = State(initialValue: AppListManager.shared.listMode)
         _appListCount = State(initialValue: AppListManager.shared.currentList.count)
     }
@@ -83,6 +85,30 @@ struct SettingsView: View {
                                     .foregroundColor(.secondary)
                             }
                         }
+                    }
+
+                    Divider()
+
+                    // SlowClose 设置
+                    HStack(alignment: .center, spacing: 16) {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(L10n.settingsSlowCloseTitle)
+                                .font(.system(size: 13, weight: .semibold))
+                                .foregroundColor(.primary)
+                            Text(L10n.settingsSlowCloseDescription)
+                                .font(.system(size: 11))
+                                .foregroundColor(.secondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+
+                        Spacer(minLength: 24)
+
+                        Toggle("", isOn: $slowCloseEnabled)
+                            .labelsHidden()
+                            .toggleStyle(.switch)
+                            .onChange(of: slowCloseEnabled) { newValue in
+                                settings.slowCloseEnabled = newValue
+                            }
                     }
 
                     Divider()

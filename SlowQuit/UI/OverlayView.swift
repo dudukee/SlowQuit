@@ -13,11 +13,15 @@ class OverlayViewModel: ObservableObject {
     @Published var progress: Double = 0.0
     @Published var duration: TimeInterval = 1.0
     @Published var appName: String = ""
+    @Published var message: String = L10n.overlayHoldToQuit
+    @Published var iconName: String = "power"
     @Published var isVisible: Bool = false
 
-    func show(duration: TimeInterval, appName: String) {
+    func show(duration: TimeInterval, appName: String, message: String = L10n.overlayHoldToQuit, iconName: String = "power") {
         self.duration = duration
         self.appName = appName
+        self.message = message
+        self.iconName = iconName
         self.progress = 0.0
         self.isVisible = true
 
@@ -76,14 +80,14 @@ struct OverlayView: View {
                                 .rotationEffect(.degrees(-90))
 
                             // 中心图标
-                            Image(systemName: "power")
+                            Image(systemName: viewModel.iconName)
                                 .font(.system(size: 40))
                                 .foregroundColor(iconColor)
                         }
                         .padding(.vertical, 8)
 
                         // 提示文字
-                        Text(L10n.overlayHoldToQuit)
+                        Text(viewModel.message)
                             .font(.system(size: 14, weight: .medium))
                             .foregroundColor(secondaryTextColor)
                     }

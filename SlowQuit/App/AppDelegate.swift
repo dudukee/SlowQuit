@@ -13,6 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var eventMonitor: EventMonitor?
     private var overlayWindow: OverlayWindow?
     private var settingsWindow: SettingsWindow?
+    private var permissionGuideWindow: PermissionGuideWindow?
     private var healthMonitor: HealthMonitor?
     private var permissionManager: PermissionManager?
 
@@ -41,39 +42,58 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // 初始化权限管理器
         permissionManager = PermissionManager()
 
-        // 检查辅助功能权限
-        if !permissionManager!.checkAccessibilityPermission() {
-            permissionManager!.requestAccessibilityPermission()
-            Logger.shared.log("请求辅助功能权限", level: .info)
-        }
-
         // 初始化叠加层窗口
         overlayWindow = OverlayWindow()
 
         // 初始化事件监听器
         eventMonitor = EventMonitor(overlayWindow: overlayWindow!)
-        eventMonitor?.start()
 
         // 初始化健康监控
         healthMonitor = HealthMonitor(eventMonitor: eventMonitor!)
-        healthMonitor?.start()
 
         // 初始化菜单栏管理器
         menuBarManager = MenuBarManager(
             eventMonitor: eventMonitor!,
             onToggleEnabled: { [weak self] enabled in
                 if enabled {
-                    self?.eventMonitor?.start()
+                    self?.startProtectionIfPermitted(showPromptIfNeeded: true)
                 } else {
                     self?.eventMonitor?.stop()
+                    self?.healthMonitor?.stop()
                 }
+            },
+            onCheckPermissions: { [weak self] in
+                self?.showPermissionGuide()
             },
             onShowSettings: { [weak self] in
                 self?.showSettings()
             }
         )
 
+        startProtectionIfPermitted(showPromptIfNeeded: true)
+
         Logger.shared.log("应用初始化完成", level: .info)
+    }
+
+    private func startProtectionIfPermitted(showPromptIfNeeded: Bool) {
+        guard let permissionManager = permissionManager,
+              let eventMonitor = eventMonitor,
+              let healthMonitor = healthMonitor else { return }
+
+        let status = permissionManager.checkEventPermissions()
+        guard status.isFullyGranted else {
+            Logger.shared.log("事件权限不足，暂不启动快捷键保护", level: .warning)
+            eventMonitor.stop()
+            healthMonitor.stop()
+
+            if showPromptIfNeeded {
+                showPermissionGuide()
+            }
+            return
+        }
+
+        eventMonitor.start()
+        healthMonitor.start()
     }
 
     private func showSettings() {
@@ -81,6 +101,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             settingsWindow = SettingsWindow()
         }
         settingsWindow?.showWindow()
+    }
+
+    private func showPermissionGuide() {
+        guard let permissionManager = permissionManager else { return }
+
+        if permissionGuideWindow == nil {
+            permissionGuideWindow = PermissionGuideWindow(
+                permissionManager: permissionManager,
+                onPermissionsReady: { [weak self] in
+                    self?.startProtectionIfPermitted(showPromptIfNeeded: false)
+                }
+            )
+        }
+        permissionGuideWindow?.showWindow()
     }
 
     func applicationWillTerminate(_ notification: Notification) {

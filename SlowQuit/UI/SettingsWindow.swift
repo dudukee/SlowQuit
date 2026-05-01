@@ -11,7 +11,7 @@ import SwiftUI
 class SettingsWindow: NSWindow, NSWindowDelegate {
     init() {
         super.init(
-            contentRect: NSRect(x: 0, y: 0, width: 480, height: 450),
+            contentRect: NSRect(x: 0, y: 0, width: 480, height: 520),
             styleMask: [.titled, .closable, .fullSizeContentView],
             backing: .buffered,
             defer: false
@@ -44,9 +44,13 @@ class SettingsWindow: NSWindow, NSWindowDelegate {
         // 显示窗口时显示 Dock 图标
         DockIconManager.shared.showDockIcon()
 
-        self.center()
-        self.makeKeyAndOrderFront(nil)
-        NSApp.activate(ignoringOtherApps: true)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.center()
+            self.makeKeyAndOrderFront(nil)
+            self.orderFrontRegardless()
+            NSApp.activate(ignoringOtherApps: true)
+        }
     }
 
     // MARK: - NSWindowDelegate

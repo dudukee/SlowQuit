@@ -22,6 +22,7 @@ enum L10n {
     static let menuQuit = string("menu.quit")
     static let menuCheckUpdate = string("menu.check_update")
     static let menuOpenLogs = string("menu.open_logs")
+    static let menuCheckPermissions = string("menu.check_permissions")
 
     // MARK: - About Dialog
     static var aboutVersion: String {
@@ -36,11 +37,31 @@ enum L10n {
     static let permissionTitle = string("permission.title")
     static let permissionMessage = string("permission.message")
     static let permissionOpenSettings = string("permission.open_settings")
+    static let permissionGrant = string("permission.grant")
     static let permissionLater = string("permission.later")
     static let permissionDescription = string("permission.description")
+    static let permissionReadyTitle = string("permission.ready_title")
+    static let permissionReadyMessage = string("permission.ready_message")
+    static let permissionStillRequiredTitle = string("permission.still_required_title")
+    static let permissionStillRequiredMessage = string("permission.still_required_message")
+    static let permissionGuideTitle = string("permission.guide_title")
+    static let permissionGuideSubtitle = string("permission.guide_subtitle")
+    static let permissionGuideFootnote = string("permission.guide_footnote")
+    static let permissionListenTitle = string("permission.listen_title")
+    static let permissionListenDescription = string("permission.listen_description")
+    static let permissionPostTitle = string("permission.post_title")
+    static let permissionPostDescription = string("permission.post_description")
+    static let permissionOpenInputMonitoring = string("permission.open_input_monitoring")
+    static let permissionOpenAccessibility = string("permission.open_accessibility")
+    static let permissionRecheck = string("permission.recheck")
+    static let permissionGranted = string("permission.granted")
+    static let permissionNotGranted = string("permission.not_granted")
+    static let permissionInputMonitoringGuideTitle = string("permission.input_monitoring_guide_title")
+    static let permissionInputMonitoringGuideMessage = string("permission.input_monitoring_guide_message")
 
     // MARK: - Overlay
     static let overlayHoldToQuit = string("overlay.hold_to_quit")
+    static let overlayHoldToClose = string("overlay.hold_to_close")
 
     // MARK: - Alerts
     static let alertError = string("alert.error")
@@ -70,6 +91,8 @@ enum L10n {
     static let settingsDelayDescription = string("settings.delay_description")
     static let settingsDelayUnit = string("settings.delay_unit")
     static let settingsHelpText = string("settings.help_text")
+    static let settingsSlowCloseTitle = string("settings.slowclose_title")
+    static let settingsSlowCloseDescription = string("settings.slowclose_description")
 
     // MARK: - App List
     static let appListModeLabel = string("app_list.mode_label")

@@ -6,7 +6,7 @@
 ![Swift](https://img.shields.io/badge/Swift-5.9+-orange.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-**A macOS menu bar app that prevents accidental app quits by adding a delay to Cmd-Q**
+**A macOS menu bar app that prevents accidental quits and closes by adding a delay to protected shortcuts**
 
 [Features](#features) • [Installation](#installation) • [Usage](#usage) • [中文文档](README_CN.md)
 
@@ -21,11 +21,12 @@
 
 ## Overview
 
-SlowQuit adds a customizable delay to the Cmd-Q keyboard shortcut on macOS, preventing accidental application quits. When you press Cmd-Q, a circular progress indicator appears and you must hold the keys for the configured duration before the app quits.
+SlowQuit adds a customizable delay to protected shortcuts on macOS. Cmd-Q is protected by default to prevent accidental quits. SlowClose can optionally protect Cmd-W to prevent accidental window or tab closes.
 
 ## Features
 
-- **Global Cmd-Q Interception** - Works across all applications
+- **Global Cmd-Q Protection** - Works across all applications
+- **Optional SlowClose** - Add the same guardrail to Cmd-W
 - **Customizable Delay** - Adjust delay duration from 0.5 to 3.0 seconds
 - **App List Management** - Whitelist/blacklist specific apps
 - **Visual Progress Indicator** - Circular overlay shows remaining time
@@ -68,10 +69,12 @@ When you first launch SlowQuit, macOS will show a security warning:
 3. Keep holding until the progress completes (default: 1 second)
 4. Release early to cancel the quit operation
 
+Enable **SlowClose** in Settings to apply the same hold-to-confirm behavior to Cmd-W.
+
 ### Menu Bar Options
 
-- **Enable/Disable** - Toggle Cmd-Q interception
-- **Settings** - Configure delay duration and app lists
+- **Enable/Disable** - Toggle shortcut protection
+- **Settings** - Configure delay duration, SlowClose, and app lists
 - **Launch at Login** - Start automatically on boot
 - **Check for Updates** - Manual update checking
 - **About** - View version information
@@ -81,10 +84,12 @@ When you first launch SlowQuit, macOS will show a security warning:
 
 **Delay Duration**: Adjust the hold time from 0.5 to 3.0 seconds
 
+**SlowClose**: Optional Cmd-W protection. It is off by default so existing close behavior does not change after update.
+
 **App List Modes**:
-- **Global**: Apply to all applications (default)
-- **Whitelist**: Only apply to selected apps
-- **Blacklist**: Exclude selected apps from delay
+- **Global**: Apply shortcut protection to all applications (default)
+- **Whitelist**: Only apply shortcut protection to selected apps
+- **Blacklist**: Exclude selected apps from shortcut protection
 
 **Managing App Lists**:
 1. Select whitelist or blacklist mode

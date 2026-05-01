@@ -11,13 +11,20 @@ class MenuBarManager {
     private var statusItem: NSStatusItem?
     private let eventMonitor: EventMonitor
     private let onToggleEnabled: (Bool) -> Void
+    private let onCheckPermissions: () -> Void
     private let onShowSettings: () -> Void
 
     private var isEnabled = true
 
-    init(eventMonitor: EventMonitor, onToggleEnabled: @escaping (Bool) -> Void, onShowSettings: @escaping () -> Void) {
+    init(
+        eventMonitor: EventMonitor,
+        onToggleEnabled: @escaping (Bool) -> Void,
+        onCheckPermissions: @escaping () -> Void,
+        onShowSettings: @escaping () -> Void
+    ) {
         self.eventMonitor = eventMonitor
         self.onToggleEnabled = onToggleEnabled
+        self.onCheckPermissions = onCheckPermissions
         self.onShowSettings = onShowSettings
 
         setupMenuBar()
@@ -70,6 +77,17 @@ class MenuBarManager {
         )
         settingsItem.target = self
         menu.addItem(settingsItem)
+
+        menu.addItem(NSMenuItem.separator())
+
+        // 权限检查
+        let checkPermissionsItem = NSMenuItem(
+            title: L10n.menuCheckPermissions,
+            action: #selector(checkPermissions),
+            keyEquivalent: ""
+        )
+        checkPermissionsItem.target = self
+        menu.addItem(checkPermissionsItem)
 
         menu.addItem(NSMenuItem.separator())
 
@@ -140,6 +158,10 @@ class MenuBarManager {
         onShowSettings()
     }
 
+    @objc private func checkPermissions() {
+        onCheckPermissions()
+    }
+
     @objc private func toggleLaunchAtLogin(_ sender: NSMenuItem) {
         do {
             if LaunchAtLoginManager.shared.isEnabled {
@@ -171,7 +193,18 @@ class MenuBarManager {
         """
         alert.alertStyle = .informational
         alert.addButton(withTitle: L10n.alertOk)
+        alignAboutTextIfNeeded(in: alert)
         alert.runModal()
+    }
+
+    private func alignAboutTextIfNeeded(in alert: NSAlert) {
+        alert.layout()
+        let informativeText = alert.informativeText
+        alert.window.contentView?.allTextFields.forEach { textField in
+            if textField.stringValue == informativeText {
+                textField.alignment = .justified
+            }
+        }
     }
 
     @objc private func checkForUpdate() {
@@ -222,5 +255,13 @@ class MenuBarManager {
         alert.alertStyle = .informational
         alert.addButton(withTitle: L10n.alertOk)
         alert.runModal()
+    }
+}
+
+private extension NSView {
+    var allTextFields: [NSTextField] {
+        subviews.flatMap { subview in
+            ([subview] + subview.allTextFields).compactMap { $0 as? NSTextField }
+        }
     }
 }

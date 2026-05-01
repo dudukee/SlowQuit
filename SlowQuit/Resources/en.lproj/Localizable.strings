@@ -11,20 +11,41 @@
 "menu.quit" = "Quit";
 "menu.check_update" = "Check for Updates";
 "menu.open_logs" = "Open Log Folder";
+"menu.check_permissions" = "Check Permissions";
 
 // About Dialog
 "about.version_label" = "Version:";
-"about.description" = "Adds a delay to the Cmd-Q shortcut to prevent accidental app quits.\n\nCustomize the delay duration in Settings.";
+"about.description" = "Adds a delay to protected shortcuts to prevent accidental quits and closes.\n\nCustomize protection in Settings.";
 
 // Permission Dialog
-"permission.title" = "Accessibility Permission Required";
-"permission.message" = "SlowQuit needs accessibility permission to monitor global shortcuts.\n\nPlease grant permission in System Settings:\nSystem Settings → Privacy & Security → Accessibility\n\nPlease restart the app after granting permission.";
+"permission.title" = "Permissions Required";
+"permission.message" = "SlowQuit needs permission to listen for protected shortcuts and send the confirmed Cmd-Q or Cmd-W event.\n\nPlease grant Input Monitoring and Accessibility permission when prompted.";
 "permission.open_settings" = "Open System Settings";
+"permission.grant" = "Grant Permissions";
 "permission.later" = "Later";
-"permission.description" = "SlowQuit needs accessibility permission to intercept the global Cmd-Q shortcut, adding a 1-second delay before quitting apps to prevent accidental quits.";
+"permission.description" = "SlowQuit needs permission to listen for protected shortcuts and send the confirmed action.";
+"permission.ready_title" = "Permissions Ready";
+"permission.ready_message" = "Shortcut protection is active.";
+"permission.still_required_title" = "Permissions Still Required";
+"permission.still_required_message" = "SlowQuit still needs Input Monitoring and Accessibility permission. Open System Settings → Privacy & Security, grant the missing permissions, then use Check Permissions from the menu bar.";
+"permission.guide_title" = "Permissions Required";
+"permission.guide_subtitle" = "SlowQuit needs two macOS permissions before shortcut protection can run.";
+"permission.guide_footnote" = "If System Settings does not open the exact page, choose Privacy & Security and grant the missing permission manually.";
+"permission.listen_title" = "Input Monitoring";
+"permission.listen_description" = "Allows SlowQuit to listen for protected Cmd-Q and Cmd-W shortcuts before apps receive them.";
+"permission.post_title" = "Accessibility";
+"permission.post_description" = "Allows SlowQuit to send the confirmed Cmd-Q or Cmd-W action after the hold timer completes.";
+"permission.open_input_monitoring" = "Open Input Monitoring";
+"permission.open_accessibility" = "Open Accessibility";
+"permission.recheck" = "Recheck";
+"permission.granted" = "Granted";
+"permission.not_granted" = "Missing";
+"permission.input_monitoring_guide_title" = "After Input Monitoring opens";
+"permission.input_monitoring_guide_message" = "If SlowQuit is not listed, quit and reopen SlowQuit, then return to Input Monitoring and enable it. macOS may only add the app after it tries to listen for keyboard events.";
 
 // Overlay
 "overlay.hold_to_quit" = "Hold to Quit...";
+"overlay.hold_to_close" = "Hold to Close...";
 
 // Alerts
 "alert.error" = "Error";
@@ -51,18 +72,20 @@
 // Settings
 "settings.title" = "Settings";
 "settings.delay_label" = "Delay Duration";
-"settings.delay_description" = "Hold Cmd+Q duration";
+"settings.delay_description" = "Hold duration";
 "settings.delay_unit" = "sec";
-"settings.help_text" = "Adjust how long you need to hold Cmd+Q to quit an application. A longer duration provides better protection against accidental quits.";
+"settings.help_text" = "Adjust how long you need to hold protected shortcuts before the action runs.";
+"settings.slowclose_title" = "SlowClose";
+"settings.slowclose_description" = "Require holding Cmd-W before closing a window or tab.";
 
 // App List
 "app_list.mode_label" = "App List Mode";
 "app_list.mode_global" = "Global";
 "app_list.mode_whitelist" = "Whitelist";
 "app_list.mode_blacklist" = "Blacklist";
-"app_list.mode_global_desc" = "Enable delay for all applications";
-"app_list.mode_whitelist_desc" = "Only enable delay for whitelisted apps, others are unaffected";
-"app_list.mode_blacklist_desc" = "Disable delay for blacklisted apps, others are enabled";
+"app_list.mode_global_desc" = "Enable shortcut protection for all applications";
+"app_list.mode_whitelist_desc" = "Only enable shortcut protection for whitelisted apps";
+"app_list.mode_blacklist_desc" = "Disable shortcut protection for blacklisted apps";
 "app_list.title" = "App List";
 "app_list.empty" = "List is empty. Click the button below to add apps";
 "app_list.add_button" = "Add App";
@@ -71,10 +94,10 @@
 "app_list.manage_title" = "App List Management";
 "app_list.whitelist_title" = "Whitelist Management";
 "app_list.blacklist_title" = "Blacklist Management";
-"app_list.whitelist_subtitle" = "Only these apps will have quit delay enabled";
-"app_list.blacklist_subtitle" = "These apps will not have quit delay enabled";
-"app_list.whitelist_empty" = "Whitelist is empty\nAdd apps to enable delay only for them";
-"app_list.blacklist_empty" = "Blacklist is empty\nAdd apps to disable delay for them";
+"app_list.whitelist_subtitle" = "Only these apps will use shortcut protection";
+"app_list.blacklist_subtitle" = "These apps will not use shortcut protection";
+"app_list.whitelist_empty" = "Whitelist is empty\nAdd apps to enable protection only for them";
+"app_list.blacklist_empty" = "Blacklist is empty\nAdd apps to disable protection for them";
 "app_list.manage_whitelist" = "Manage Whitelist";
 "app_list.manage_blacklist" = "Manage Blacklist";
 

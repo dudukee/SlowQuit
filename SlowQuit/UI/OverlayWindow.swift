@@ -59,7 +59,7 @@ class OverlayWindow: NSWindow {
         Logger.shared.log("叠加层视图已初始化（复用模式）", level: .debug)
     }
 
-    func show(duration: TimeInterval, appName: String) {
+    func show(duration: TimeInterval, appName: String, message: String = L10n.overlayHoldToQuit, iconName: String = "power") {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
 
@@ -75,7 +75,7 @@ class OverlayWindow: NSWindow {
             self.level = .screenSaver
 
             // 更新 ViewModel 数据（复用视图，只更新数据）
-            self.viewModel.show(duration: duration, appName: appName)
+            self.viewModel.show(duration: duration, appName: appName, message: message, iconName: iconName)
 
             // 显示窗口
             self.orderFrontRegardless()

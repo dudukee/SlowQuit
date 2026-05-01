@@ -20,6 +20,8 @@ class HealthMonitor {
     }
 
     func start() {
+        guard healthCheckTimer == nil else { return }
+
         Logger.shared.log("健康监控已启动 (间隔: \(checkInterval)秒)", level: .info)
 
         healthCheckTimer = Timer.scheduledTimer(
@@ -66,6 +68,12 @@ class HealthMonitor {
     }
 
     private func restartEventMonitor() {
+        guard PermissionManager().checkEventPermissions().isFullyGranted else {
+            Logger.shared.log("事件权限不足，跳过事件监听器重启", level: .warning)
+            eventMonitor.stop()
+            return
+        }
+
         Logger.shared.log("尝试重启事件监听器...", level: .warning)
         eventMonitor.stop()
 

@@ -13,6 +13,7 @@ class SettingsManager {
     // UserDefaults keys
     private enum Keys {
         static let quitDelay = "quitDelay"
+        static let slowCloseEnabled = "slowCloseEnabled"
     }
 
     // 通知名称
@@ -49,6 +50,17 @@ class SettingsManager {
             )
 
             Logger.shared.log(String(format: "延迟时长已更新: %.1f秒", clampedValue), level: .info)
+        }
+    }
+
+    // SlowClose 默认关闭，避免改变现有用户的 Cmd-W 行为
+    var slowCloseEnabled: Bool {
+        get {
+            userDefaults.bool(forKey: Keys.slowCloseEnabled)
+        }
+        set {
+            userDefaults.set(newValue, forKey: Keys.slowCloseEnabled)
+            Logger.shared.log("SlowClose 已\(newValue ? "启用" : "禁用")", level: .info)
         }
     }
 

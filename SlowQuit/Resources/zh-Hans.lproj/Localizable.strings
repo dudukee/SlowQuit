@@ -11,20 +11,41 @@
 "menu.quit" = "退出";
 "menu.check_update" = "检查更新...";
 "menu.open_logs" = "打开日志文件夹";
+"menu.check_permissions" = "检查权限";
 
 // About Dialog
 "about.version_label" = "版本:";
-"about.description" = "为 Cmd-Q 快捷键添加延迟，防止意外退出应用。\n\n可在设置中自定义延迟时长。";
+"about.description" = "为受保护快捷键添加延迟，防止意外退出和关闭。\n\n可在设置中自定义保护行为。";
 
 // Permission Dialog
-"permission.title" = "需要辅助功能权限";
-"permission.message" = "SlowQuit 需要辅助功能权限来监听全局快捷键。\n\n请在系统设置中授予权限：\n系统设置 → 隐私与安全性 → 辅助功能\n\n授予权限后，请重启应用。";
+"permission.title" = "需要权限";
+"permission.message" = "SlowQuit 需要权限来监听受保护快捷键，并在确认后发送 Cmd-Q 或 Cmd-W 事件。\n\n请在系统提示中授予输入监控和辅助功能权限。";
 "permission.open_settings" = "打开系统设置";
+"permission.grant" = "授予权限";
 "permission.later" = "稍后设置";
-"permission.description" = "SlowQuit 需要辅助功能权限来拦截全局 Cmd-Q 快捷键，为退出应用添加 1 秒延迟，防止意外退出。";
+"permission.description" = "SlowQuit 需要权限来监听受保护快捷键，并发送确认后的操作。";
+"permission.ready_title" = "权限已就绪";
+"permission.ready_message" = "快捷键保护已启用。";
+"permission.still_required_title" = "仍需要权限";
+"permission.still_required_message" = "SlowQuit 仍需要输入监控和辅助功能权限。请打开系统设置 → 隐私与安全性，授予缺失权限后，在菜单栏中点击「检查权限」。";
+"permission.guide_title" = "需要权限";
+"permission.guide_subtitle" = "SlowQuit 需要两项 macOS 权限后，才能启用快捷键保护。";
+"permission.guide_footnote" = "如果系统设置没有打开到精确页面，请进入「隐私与安全性」后手动授予缺失权限。";
+"permission.listen_title" = "输入监控";
+"permission.listen_description" = "允许 SlowQuit 在应用收到快捷键前监听受保护的 Cmd-Q 和 Cmd-W。";
+"permission.post_title" = "辅助功能";
+"permission.post_description" = "允许 SlowQuit 在长按计时完成后发送确认后的 Cmd-Q 或 Cmd-W 操作。";
+"permission.open_input_monitoring" = "打开输入监控";
+"permission.open_accessibility" = "打开辅助功能";
+"permission.recheck" = "重新检查";
+"permission.granted" = "已授权";
+"permission.not_granted" = "未授权";
+"permission.input_monitoring_guide_title" = "打开输入监控后";
+"permission.input_monitoring_guide_message" = "如果列表里没有 SlowQuit，请先完全退出并重新打开 SlowQuit，再回到输入监控里勾选它。macOS 有时只会在应用尝试监听键盘事件后把它加入列表。";
 
 // Overlay
 "overlay.hold_to_quit" = "按住退出...";
+"overlay.hold_to_close" = "按住关闭...";
 
 // Alerts
 "alert.error" = "错误";
@@ -51,18 +72,20 @@
 // Settings
 "settings.title" = "设置";
 "settings.delay_label" = "延迟时长";
-"settings.delay_description" = "按住 Cmd+Q 的时长";
+"settings.delay_description" = "按住快捷键的时长";
 "settings.delay_unit" = "秒";
-"settings.help_text" = "调整按住 Cmd+Q 需要保持的时长以退出应用。较长的时长可以更好地防止误操作。";
+"settings.help_text" = "调整受保护快捷键需要按住多久才会执行。";
+"settings.slowclose_title" = "SlowClose";
+"settings.slowclose_description" = "关闭窗口或标签页前，需要长按 Cmd-W。";
 
 // App List
 "app_list.mode_label" = "应用列表模式";
 "app_list.mode_global" = "全局";
 "app_list.mode_whitelist" = "白名单";
 "app_list.mode_blacklist" = "黑名单";
-"app_list.mode_global_desc" = "对所有应用启用延迟退出";
-"app_list.mode_whitelist_desc" = "仅对白名单中的应用启用延迟退出，其他应用不受影响";
-"app_list.mode_blacklist_desc" = "对黑名单中的应用禁用延迟退出，其他应用正常启用";
+"app_list.mode_global_desc" = "对所有应用启用快捷键保护";
+"app_list.mode_whitelist_desc" = "仅对白名单中的应用启用快捷键保护";
+"app_list.mode_blacklist_desc" = "对黑名单中的应用禁用快捷键保护";
 "app_list.title" = "应用列表";
 "app_list.empty" = "列表为空，点击下方按钮添加应用";
 "app_list.add_button" = "添加应用";
@@ -71,10 +94,10 @@
 "app_list.manage_title" = "应用列表管理";
 "app_list.whitelist_title" = "白名单管理";
 "app_list.blacklist_title" = "黑名单管理";
-"app_list.whitelist_subtitle" = "仅这些应用会启用延迟退出";
-"app_list.blacklist_subtitle" = "这些应用不会启用延迟退出";
-"app_list.whitelist_empty" = "白名单为空\n添加应用后，只有这些应用会启用延迟退出";
-"app_list.blacklist_empty" = "黑名单为空\n添加应用后，这些应用将不会启用延迟退出";
+"app_list.whitelist_subtitle" = "仅这些应用会启用快捷键保护";
+"app_list.blacklist_subtitle" = "这些应用不会启用快捷键保护";
+"app_list.whitelist_empty" = "白名单为空\n添加应用后，只有这些应用会启用快捷键保护";
+"app_list.blacklist_empty" = "黑名单为空\n添加应用后，这些应用将不会启用快捷键保护";
 "app_list.manage_whitelist" = "管理白名单";
 "app_list.manage_blacklist" = "管理黑名单";
 
