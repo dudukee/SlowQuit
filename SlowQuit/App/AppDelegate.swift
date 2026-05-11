@@ -28,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         #if DEBUG
         Logger.shared.minimumLogLevel = .debug
         #else
-        Logger.shared.minimumLogLevel = .warning
+        Logger.shared.minimumLogLevel = .info
         #endif
 
         Logger.shared.log("应用启动", level: .info)

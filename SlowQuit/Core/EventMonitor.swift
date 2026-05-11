@@ -59,6 +59,8 @@ private enum ProtectedAction: String {
 }
 
 class EventMonitor {
+    private static let synthesizedEventMarker: Int64 = 0x53514C575F455654
+
     private var eventTap: CFMachPort?
     private var runLoopSource: CFRunLoopSource?
     private var pressTimer: Timer?
@@ -179,7 +181,7 @@ class EventMonitor {
             return Unmanaged.passUnretained(event)
         }
 
-        if isSendingProtectedEvent {
+        if isSynthesizedProtectedEvent(event) {
             return Unmanaged.passUnretained(event)
         }
 
@@ -303,8 +305,11 @@ class EventMonitor {
                 return
             }
 
-            guard let keyDownEvent = CGEvent(keyboardEventSource: nil, virtualKey: keyCode, keyDown: true),
-                  let keyUpEvent = CGEvent(keyboardEventSource: nil, virtualKey: keyCode, keyDown: false) else {
+            let eventSource = CGEventSource(stateID: .hidSystemState)
+            eventSource?.userData = Self.synthesizedEventMarker
+
+            guard let keyDownEvent = CGEvent(keyboardEventSource: eventSource, virtualKey: keyCode, keyDown: true),
+                  let keyUpEvent = CGEvent(keyboardEventSource: eventSource, virtualKey: keyCode, keyDown: false) else {
                 Logger.shared.log("无法创建键盘事件", level: .error)
                 self.isSendingProtectedEvent = false
                 return
@@ -329,6 +334,10 @@ class EventMonitor {
             && !flags.contains(.maskShift)
             && !flags.contains(.maskAlternate)
             && !flags.contains(.maskControl)
+    }
+
+    private func isSynthesizedProtectedEvent(_ event: CGEvent) -> Bool {
+        event.getIntegerValueField(.eventSourceUserData) == Self.synthesizedEventMarker
     }
 
     private func protectedAction(for event: CGEvent) -> ProtectedAction? {

@@ -1,6 +1,6 @@
 {
-  "latest_version": "0.0.2",
-  "latest_build": "2",
+  "latest_version": "0.0.3",
+  "latest_build": "3",
   "download_url": "https://github.com/dudukee/SlowQuit/releases/latest",
   "release_notes": "新增 SlowClose、权限引导和更新检查配置。",
   "release_notes_en": "Adds SlowClose, permission onboarding, and update-check configuration.",
