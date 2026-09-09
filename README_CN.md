@@ -150,6 +150,14 @@ SlowQuit 为 macOS 上的受保护快捷键添加可自定义的延迟。Cmd-Q �
 
 MIT 许可证 - 详情请参见 [LICENSE](LICENSE) 文件。
 
+## 维护政策
+
+SlowQuit 主要根据作者的个人使用需求进行维护。
+
+欢迎提交问题反馈，但修复工作将视时间和精力而定。无法在维护者设备上复现的问题可能会被关闭，或作为已知限制保留。项目不保证回复时间或修复计划。
+
+欢迎提交经过测试的修复代码。
+
 ## 支持
 
 - **问题反馈**：[GitHub Issues](https://github.com/dudukee/SlowQuit/issues)

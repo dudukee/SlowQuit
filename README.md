@@ -155,6 +155,16 @@ Required to monitor global keyboard events using CGEventTap - the only way to in
 
 MIT License - see [LICENSE](LICENSE) file for details.
 
+## Maintenance Policy
+
+SlowQuit is primarily maintained for the author's personal use.
+
+Bug reports are welcome, but fixes are provided on a best-effort basis.
+Issues that cannot be reproduced on the maintainer's devices may be closed
+or kept as documented limitations. No response time or fix schedule is guaranteed.
+
+Pull requests with tested fixes are welcome.
+
 ## Support
 
 - **Issues**: [GitHub Issues](https://github.com/dudukee/SlowQuit/issues)
